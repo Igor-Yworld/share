@@ -1,0 +1,24 @@
+/* Вставка соц. yarus*/
+
+// если только шорткодом, фильтр можно закомментить
+add_filter('the_content','yw_yarus_button', 10);
+function yw_yarus_button($content){
+
+	if(!is_single())
+		return $content;
+
+	$content .= '<div id="yw-share" style="display:block;background-color:#f3f4f4;border-radius:6px;text-align:left;overflow:hidden;margin: 0 0 0 1px;clear:both;">';
+	
+	 $content .= '<div>Читайте нас: <a href="ссылка на аккаунт"><img src="ссылка на картинку" width="36" height="36" border="0" alt="Читайте нас в ЯRUS" rel="nofollow noopener" target="_blank"></a>';
+	 $content .= '<a href="ссылка на аккаунт"><img src="ссылка на картинку" width="22" height="22" border="0" alt="Читайте нас в Telegram" rel="nofollow noopener" target="_blank"></a>';
+	 $content .= ' <a href="ссылка на аккаунт"><img src="ссылка на картинку" width="33" height="33" border="0" alt="Читайте нас в Вконтакте" rel="nofollow noopener" target="_blank"></a>';
+	 $content .= ' <a href="ссылка на аккаунт"><img src="ссылка на картинку" width="30" height="30" border="0" alt="Читайте нас в ОК" rel="nofollow noopener" target="_blank"></a></div>';
+	
+   $content .= '</div>';
+	
+return $content;	
+}
+// можно использовать шорткод [yw_share_yarus]
+add_shortcode('yw_share_yarus', 'yw_yarus_button');
+// удаляем из анонса
+remove_filter('the_excerpt', 'yw_yarus_button',10);
